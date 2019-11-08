@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package yak.user;
+
+service UserService {
+    // 注册用户
+    rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {}
+    // 用户登录
+    rpc LoginUser(LoginUserRequest) returns (LoginUserResponse) {}
+    // 密码重置
+    rpc ResetUser(ResetUserRequest) returns (ResetUserResponse) {}
+    // 修改用户信息
+    rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse) {}
+}
+
+message RegisterUserRequest {
+    string record = 1;
+    string userName = 2;
+    string password = 3;
+}
+
+message RegisterUserResponse {}
+
+message LoginUserRequest {
+    string userName = 1;
+    string password = 2;
+}
+
+message LoginUserResponse {
+    string record = 1;
+    string userName = 2;
+    string email = 3;
+    string phone = 4;
+}
+
+message ResetUserRequest {
+    string userName = 1;
+    string password = 2;
+    string newPassword = 3;
+    string record = 4;
+}
+
+message ResetUserResponse {}
+
+message UpdateUserProfileRequest {
+    string userName = 1;
+    string userEmail = 2;
+    string userPhone = 3;
+    string record = 4;
+}
+
+message UpdateUserProfileResponse {}
