@@ -1,17 +1,23 @@
 package casbin
 
-//import (
-//    "net/http"
-//    "strings"
-//)
+import (
+	"github.com/casbin/casbin/v2"
+	"go.uber.org/zap"
+	"net/http"
+)
 
-//func CheckPermission(r *http.Request) bool {
-//    path := r.URL.Path
-//    // 过滤静态资源、login接口、首页等...不需要验证
-//    if checkURL(path) || strings.Contains(path, "/static") {
-//        return true
-//    }
-//
-//    // TODO: JWT token验证
-//
-//}
+var logger *zap.Logger
+
+func PermissionMiddleware(enforcer *casbin.SyncedEnforcer, r *http.Request) bool {
+	path := r.URL.Path
+	method := r.Method
+	userRecord := r.Header.Get("USER_RECORD")
+	if b, err := enforcer.Enforce(userRecord, path, method); err != nil {
+		logger.Error("权限验证失败", zap.Error(err))
+		return false
+	} else if !b {
+		logger.Info("无访问权限")
+		return false
+	}
+	return false
+}

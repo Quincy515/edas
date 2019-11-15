@@ -2,6 +2,7 @@ package route
 
 import (
 	"edas/service/apigw/handler"
+	"edas/service/apigw/middleware"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 )
@@ -19,6 +20,7 @@ func NewMiddleWareHandler(r *httprouter.Router) http.Handler {
 func (m middleWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// 加入中间件
 	// TODO: 用于校验token的拦截器
+	middleware.CheckPermission(r)
 	m.r.ServeHTTP(w, r)
 }
 
