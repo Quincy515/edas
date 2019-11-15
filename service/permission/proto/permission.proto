@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+package yak.permissions;
+
+service PermissionService {
+    // 菜单管理
+    // 增：添加菜单
+    rpc CreateMenu(CreateMenuRequest) returns (CreateMenuResponse) {}
+    // 删: 删除菜单
+    rpc DeleteMenu(DeleteMenuRequest) returns (DeleteMenuResponse) {}
+    // 改: 修改菜单
+    rpc UpdateMenu(UpdateMenuRequest) returns (UpdateMenuResponse) {}
+    // 查: 查询菜单列表
+    rpc QueryMenu(QueryMenuRequest) returns (QueryMenuResponse) {}
+    // 查询指定数据
+    rpc GetMenu(GetMenuRequest) returns (GetMenuResponse) {}
+    // 角色管理
+    // 增: 添加角色
+    rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse) {}
+    // 删: 删除角色
+    rpc DeleteRole(DeleteRoleRequest) returns (DeleteRoleResponse) {}
+    // 改: 修改角色
+    rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {}
+    // 查: 查询角色
+    rpc QueryRole(QueryRoleRequest) returns (QueryRoleResponse) {}
+    // 查询指定角色
+    rpc GetRole(GetRoleRequest) returns (GetRoleResponse) {}
+}
+
+message Menu {
+    string record = 1;
+    string name = 2;
+    int64 sequence = 3;
+    string icon = 4;
+    string router = 5;
+    int64 hidden = 6;
+    string parentId = 7;
+    string parentPath = 8;
+    string creator = 9;
+}
+
+message CreateMenuRequest {
+    string record = 1;
+    string name = 2;
+    int64 sequence = 3;
+    string icon = 4;
+    string router = 5;
+    int64 hidden = 6;
+    string parentId = 7;
+    string parentPath = 8;
+    string creator = 9;
+}
+
+message CreateMenuResponse {}
+
+message DeleteMenuRequest {
+    string record = 1;
+}
+
+message DeleteMenuResponse {}
+
+message UpdateMenuRequest {
+    string record = 1;
+    string name = 2;
+    int64 sequence = 3;
+    string icon = 4;
+    string router = 5;
+    int64 hidden = 6;
+    string parentId = 7;
+    string parentPath = 8;
+    string creator = 9;
+}
+
+message UpdateMenuResponse {}
+
+message QueryMenuRequest {
+    bytes params = 1; // 请求参数列表, json-encoded
+}
+
+message QueryMenuResponse {
+    bytes data = 1; // 执行的结果
+    repeated Menu menus = 2;
+}
+
+message GetMenuRequest {
+    string record = 1;
+}
+
+message GetMenuResponse {
+    string record = 1;
+    string name = 2;
+    int64  sequence = 3;
+    string icon = 4;
+    string router = 5;
+    int64  hidden = 6;
+    string parentId = 7;
+    string parentPath = 8;
+    string creator = 9;
+}
+
+message CreateRoleRequest {
+    string record = 1;
+    string name = 2;
+    int64  sequence = 3;
+    string memo = 4;
+    string creator = 5;
+}
+
+message CreateRoleResponse {}
+
+message DeleteRoleRequest {
+    string record = 1;
+}
+message DeleteRoleResponse {}
+
+message UpdateRoleRequest {
+    string record = 1;
+    string name = 2;
+    int64  sequence = 3;
+    string memo = 4;
+    string creator = 5;
+}
+
+message UpdateRoleResponse {}
+
+message QueryRoleRequest {}
+message QueryRoleResponse {}
+
+message GetRoleRequest {
+    string record = 1;
+    string name = 2;
+}
+
+message GetRoleResponse {
+    string record = 1;
+    string name = 2;
+    int64  sequence = 3;
+    string memo = 4;
+    string creator = 5;
+}

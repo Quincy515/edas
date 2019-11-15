@@ -59,6 +59,8 @@ go get github.com/micro/protoc-gen-micro
 go get github.com/google/uuid
 go get github.com/julienschmidt/httprouter
 go get github.com/juju/ratelimit
+go get github.com/casbin/casbin
+go get github.com/casbin/casbin-server
 ```
 
 2.  项目结构概览
@@ -144,4 +146,8 @@ Node          Address          Status  Type    Build  Protocol  DC   Segment
 - Dig： [官网](http://go.uber.org/dig)
 - go-micro微服务框架: [github源码](https://github.com/micro/go-micro)
 - go-micro微服务实现的在线电影院订票系统: [github源码](https://github.com/wiatingpub/MTBSystem)
+- 一个Go Web Api 后端 简单例子,包含 用户、权限、菜单、JWT 、 RBAC(Casbin)等: [github源码](https://github.com/hequan2017/go-admin)
+- Example of role-based HTTP Authorization with casbin: [github源码](https://github.com/zupzup/casbin-http-role-example)
+- 基于casbin实现的身份认证及验证授权服务例子: [github源码](https://github.com/Soontao/go-simple-api-gateway)
+- 基于Go Micro + Casbin + Gin + Gorm + Casbin + JWT 用户认证和权限微服务: [正在开发](https://github.com/winyh/accbase)
 我的手记博客 http://cn.blog.cn/custer

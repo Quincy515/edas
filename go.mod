@@ -3,6 +3,8 @@ module edas
 go 1.13
 
 require (
+	github.com/casbin/casbin v1.9.1
+	github.com/casbin/casbin-server v0.0.0-20191011091846-dc83b3dae094 // indirect
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/golang/protobuf v1.3.2
 	github.com/google/uuid v1.1.1

@@ -20,7 +20,8 @@ func main() {
 	//mux := http.NewServeMux()
 	//mux.HandleFunc("/", handleRPC)
 	r := route.RegisterHandlers()
-	err := http.ListenAndServe(":7001", r)
+	mh := route.NewMiddleWareHandler(r)
+	err := http.ListenAndServe(":7001", mh)
 	if err != nil {
 		logger.Error("start api gateway server failed")
 	}

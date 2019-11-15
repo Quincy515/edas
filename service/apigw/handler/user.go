@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	permProto "edas/service/permission/proto"
 	userProto "edas/service/user/proto"
 	"edas/share/config"
 	"edas/share/log"
@@ -19,6 +20,7 @@ import (
 
 var (
 	userCli userProto.UserService
+	permCli permProto.PermissionService
 	logger  *zap.Logger
 )
 
@@ -39,6 +41,7 @@ func init() {
 
 	// 初始化一个user服务的客户端
 	userCli = userProto.NewUserService(config.NameSpace+config.ServiceNameUser, cli)
+	permCli = permProto.NewPermissionService(config.NameSpace+config.ServiceNamePermission, cli)
 }
 
 // 请求request的结构体

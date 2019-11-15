@@ -8,8 +8,10 @@ const (
 )
 
 const (
-	ServiceNameUser  = "user"
-	ServiceNameClass = "class"
+	ServiceNameUser       = "user"
+	ServiceNameClass      = "class"
+	ServiceNamePermission = "permission"
+	ServiceNameRBAC       = "casbin"
 )
 
 const (

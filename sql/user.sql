@@ -1,3 +1,4 @@
+-- 创建用户表 用户实体(user)
 CREATE TABLE user (
   user_id INT(11) AUTO_INCREMENT NOT NULL COMMENT '类型id',
   record_id char(50) NOT NULL DEFAULT '' COMMENT '用户的记录id',
